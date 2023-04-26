@@ -1,5 +1,7 @@
 # Rayleigh-Lamb-Equation-Solver
-Calculate Lamb wave dispersion diagrams for free isotropic plates by evaluating the Rayleigh-Lamb equations.
+Calculate Lamb wave dispersion diagrams for free isotropic plates by evaluating the Rayleigh-Lamb equations. 
+
+Written in MATLAB R2022a and Python 3.10.
 
 ## Literature
 
