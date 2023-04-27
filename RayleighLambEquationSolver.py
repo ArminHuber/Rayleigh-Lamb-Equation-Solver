@@ -1,6 +1,6 @@
 """
 Rayleigh-Lamb Equation Solver
-Update 2023/04/26
+Update 2023/04/27
 written by: Armin Huber, armin.huber@dlr.de
 -------------------------------------------------------------------------------
 Calculate Lamb wave dispersion diagrams for a free isotropic plate by
@@ -34,12 +34,10 @@ kL2 = (AngularFrequency/MaterialLongitudinalVelocity)**2 # wavenumber^2 of longi
 kT2 = (AngularFrequency/MaterialTransverseVelocity)**2 # wavenumber^2 of transverse bulk waves
 x = np.lib.scimath.sqrt(kL2-k2) # out-of-plane wavenumber component of longitudinal bulk waves
 y = np.lib.scimath.sqrt(kT2-k2) # out-of-plane wavenumber component of transverse bulk waves
-a1 = (y**2-k2)**2/y
-a2 = 4*k2*x
-a3 = np.tan(x*Half)
-a4 = np.tan(y*Half)
-S = np.abs(a1/a3+a2/a4) # Rayleigh-Lamb equation for symmetric modes (absolute value)
-A = np.abs(a1*a3+a2*a4) # Rayleigh-Lamb equation for antisymmetric modes (absolute value)
+a1 = (y**2-k2)**2/(4*k2*x*y)
+a2 = np.tan(x*Half)/np.tan(y*Half)
+S = np.abs(a1+a2) # Rayleigh-Lamb equation for symmetric modes (absolute value)
+A = np.abs(a1+1/a2) # Rayleigh-Lamb equation for antisymmetric modes (absolute value)
 
 # %% dispersion diagrams
 plt.figure(figsize=[16,10])
